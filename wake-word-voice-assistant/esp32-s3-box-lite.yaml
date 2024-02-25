@@ -196,7 +196,10 @@ esp_adf:
 microphone:
   - platform: esp_adf
     id: box_mic
-
+speaker:
+  - platform: esp_adf
+    id: media_player
+    
 micro_wake_word:
   model: ${micro_wake_word_model}
   on_wake_word_detected:
@@ -205,6 +208,7 @@ micro_wake_word:
 voice_assistant:
   id: va
   microphone: box_mic
+  speaker: media_player
   use_wake_word: true
   noise_suppression_level: 2
   auto_gain: 31dBFS
