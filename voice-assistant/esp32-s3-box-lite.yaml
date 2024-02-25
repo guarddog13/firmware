@@ -252,7 +252,15 @@ voice_assistant:
   on_client_disconnected:
     - lambda: id(voice_assistant_phase) = ${voice_assist_not_ready_phase_id};
     - script.execute: draw_display
-
+  on_tts_end:
+     - homeassistant.service:
+         service: media_player.play_media
+         data:
+           entity_id: media_player.master_bedroom # <- change this
+           media_content_id: !lambda 'return x;'
+           media_content_type: music
+           announce: "true"
+script:
 script:
   - id: draw_display
     then:
